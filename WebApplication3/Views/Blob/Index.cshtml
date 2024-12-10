@@ -1,0 +1,29 @@
+﻿@model List<WebApplication3.Model.BlobDto>
+
+<h1>Blob List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>URI</th>
+            <th>Content Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blob in Model)
+        {
+            <tr>
+                <td>@blob.Name</td>
+                <td><a href="@blob.Uri" target="_blank">@blob.Uri</a></td>
+                <td>@blob.ContentType</td>
+                <td>
+                    <a asp-controller="Blob" asp-action="Download" asp-route-filename="@blob.Name">Download</a> |
+                    <a asp-controller="Blob" asp-action="Delete" asp-route-filename="@blob.Name">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Blob" asp-action="Upload">Upload New File</a>

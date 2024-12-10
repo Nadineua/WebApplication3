@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebApplication3.Model.Test>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Test List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Tests")">Create New Test</a>

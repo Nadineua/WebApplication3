@@ -1,0 +1,26 @@
+﻿@model WebApplication3.Model.BlobResponseDto
+
+<h1>Upload File</h1>
+
+<form asp-controller="Blob" asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="file">Select File:</label>
+        <input type="file" name="file" id="file" />
+    </div>
+    <div>
+        <button type="submit">Upload</button>
+    </div>
+</form>
+
+@if (Model != null)
+{
+    <p>Status: @Model.Status</p>
+    @if (Model.error)
+    {
+        <p>Error: Upload failed!</p>
+    }
+    else
+    {
+        <p>Uploaded Successfully. URI: <a href="@Model.Blob.Uri" target="_blank">@Model.Blob.Uri</a></p>
+    }
+}
